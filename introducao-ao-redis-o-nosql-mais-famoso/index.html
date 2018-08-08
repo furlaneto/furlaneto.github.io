@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Introdução ao Redis, o NoSQL chave-valor mais famoso | techiohub</title>
+<meta name="generator" content="Jekyll v3.8.3" />
+<meta property="og:title" content="Introdução ao Redis, o NoSQL chave-valor mais famoso" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Antes de falarmos de Redis, o que é NoSQL? Creio que muitos já sabem o que é, mas alguns ainda possuem aquela dúvida. NoSQL (referência de non SQL), é o termo utilizado para descrever os bancos de dados não relacionais. Os bancos NoSQL, diferente dos bancos tradicionais como Oracle, MySQL, SQL Server e outros, não são necessariamente do mesmo tipo, pois cada um adota um ou mais modelo de dados. Estes modelos de dados podem ser documentos, chave e valor, colunar ou gráfo." />
+<meta property="og:description" content="Antes de falarmos de Redis, o que é NoSQL? Creio que muitos já sabem o que é, mas alguns ainda possuem aquela dúvida. NoSQL (referência de non SQL), é o termo utilizado para descrever os bancos de dados não relacionais. Os bancos NoSQL, diferente dos bancos tradicionais como Oracle, MySQL, SQL Server e outros, não são necessariamente do mesmo tipo, pois cada um adota um ou mais modelo de dados. Estes modelos de dados podem ser documentos, chave e valor, colunar ou gráfo." />
+<link rel="canonical" href="http://localhost:4000/introducao-ao-redis-o-nosql-mais-famoso/" />
+<meta property="og:url" content="http://localhost:4000/introducao-ao-redis-o-nosql-mais-famoso/" />
+<meta property="og:site_name" content="techiohub" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-12-20T11:34:00-02:00" />
+<script type="application/ld+json">
+{"description":"Antes de falarmos de Redis, o que é NoSQL? Creio que muitos já sabem o que é, mas alguns ainda possuem aquela dúvida. NoSQL (referência de non SQL), é o termo utilizado para descrever os bancos de dados não relacionais. Os bancos NoSQL, diferente dos bancos tradicionais como Oracle, MySQL, SQL Server e outros, não são necessariamente do mesmo tipo, pois cada um adota um ou mais modelo de dados. Estes modelos de dados podem ser documentos, chave e valor, colunar ou gráfo.","@type":"BlogPosting","url":"http://localhost:4000/introducao-ao-redis-o-nosql-mais-famoso/","headline":"Introdução ao Redis, o NoSQL chave-valor mais famoso","dateModified":"2017-12-20T11:34:00-02:00","datePublished":"2017-12-20T11:34:00-02:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/introducao-ao-redis-o-nosql-mais-famoso/"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="techiohub" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">techiohub</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">Sobre</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Introdução ao Redis, o NoSQL chave-valor mais famoso</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2017-12-20T11:34:00-02:00" itemprop="datePublished">Dec 20, 2017
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Antes de falarmos de Redis, o que é NoSQL? Creio que muitos já sabem o que é, mas alguns ainda possuem aquela dúvida. NoSQL (referência de non SQL), é o termo utilizado para descrever os bancos de dados não relacionais. Os bancos NoSQL, diferente dos bancos tradicionais como Oracle, MySQL, SQL Server e outros, não são necessariamente do mesmo tipo, pois cada um adota um ou mais modelo de dados. Estes modelos de dados podem ser documentos, chave e valor, colunar ou gráfo.</p>
+
+<p>Assim como o modelo de dados para resolver cada tipo de problema, os bancos NoSQL no geral possuem diferenças comparando aos bancos relacionais. Para começar, podemos dizer que os bancos NoSQL não possui um schema, ou seja, não é da mesma forma como os bancos convencionais são representados, através de uma normalização de dados por meio de tabelas, colunas e linhas. Outra diferença é a forma como escalamos os bancos NoSQL, onde quanto maior o nosso cluster, maior o desempenho, sendo mais fácil realizar o escalonamento horizontal, diferente dos bancos relacionais que são mais fácil realizar o escalonamento vertical, adicionando mais recursos a uma máquina, como memória e CPU. Essas são apenas algumas diferenças entre os bancos NoSQL e relacionais.</p>
+
+<p>Mas onde o Redis se encaixa nisso? O Redis é o banco de dados NoSQL do tipo chave-valor mais famoso/conhecido. No mercado podemos encontrar diversas outras soluções que também são mecanismos de armazenamento baseado em chave-valor, incluindo Memcached e Hazelcast, mas vamos falar especificamente do Redis.</p>
+
+<p>Para iniciarmos, o que seria um mecanismo de armazenamento do tipo chave-valor? Simples, é uma forma de armazenarmos um valor vinculado a uma chave, assim como estruturas encontradas em linguagens de programação, por exemplo, o <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html">Map</a> do Java. Para simplificar, podemos pensar em algo como várias gavetas, onde cada gaveta possui um nome, que não pode se repetir e dentro de cada gaveta possui um valor que representa a mesma. Por exemplo, cada gaveta representa o nome de uma pessoa e dentro dela possui o valor da idade, então se eu quero saber a idade do Lucas, vou até a gaveta “Lucas” e pego o valor, no caso, 22. Simples, não é? Este exemplo foi exatamente a estrutura mais simples de armazenamento do Redis, onde temos uma chave e um valor, podendo ser uma letra, palavra, texto ou número. Só que o Redis vai além disso, pois o valor da chave não precisa ser necessariamente algo tão simples como o exemplo anterior, o valor pode ser uma estrutura de dados um pouco mais complexa, como uma lista, conjunto ou hash.</p>
+
+<p>Tudo bem, falamos o que é o Redis, mostramos o conceito básico dele e os tipos de dados, mas qual o seu uso no dia a dia do desenvolvedor? Alguns.</p>
+
+<p>Acredito que quando ouvimos falar em chave-valor, estrutura de Map em Java ou em outras linguagens, a primeira coisa que vem na mente é cache e sim, um dos seus usos é para isso mesmo. Mas ok, vamos dizer que seja uma aplicação web e você me pergunte: Lucas, não posso fazer a mesma coisa com a sessão? Sim, podemos, mas se tivermos mais de um servidor executando nossa aplicação? O que é muito comum. Hora que o usuário acessar o servidor1 e salvar algo na sessão, depois acessar o servidor2, será que a informação estará lá também? Não, pois como estamos armazenando na sessão, isso ficará armazenado na memória do servidor e quando tentar acessar o outro servidor, não estará lá. É claro que quando fazemos um cluster, alguns servidores fornecem soluções, como o JBoss, fazendo a replicação de sessão através de UDP ou outras maneiras, mas também podemos utilizar o Redis de forma centralizada, onde qualquer informação que precisamos salvar ou consultar relacionada a sessão ou cache, vamos diretamente nele, assim, se o usuário estiver no servidor1 ou no servidor 2, ele terá a mesma informação.</p>
+
+<p>Um outro caso que é possível utilizar o Redis é quando na página inicial de um site exibe totalizadores ou um ranking de games que muitas vezes não são dados que atualizam a todo momento e muitas vezes ao tentar recuperar estas informações diretamente de uma base relacional e realizar uma soma, média ou qualquer que seja a operação, demanda uma certa quantidade de recursos, prejudicando ainda mais a performance caso tenha um alto volume de acesso a estas informações. Sendo assim, para economizar recursos e consequentemente retornar estas informações com maior velocidade, é possível armazenar estes totalizadores diretamente no Redis, assim, quando o usuário acessar a página, não terá que recuperar uma quantidade de registros, depois fazer uma operação e retornar, mas já poderá recuperar estes valores diretamente. Consegue imaginar a economia de recurso e tempo? Para demonstrar esse exemplo no dia dia, podemos imaginar um dashboard ou apenas uma tela que mostra o totalizadores de itens vendidos ou o valor total de vendas do dia anterior, assim não precisamos mais recuperar todas as vendas do dia anterior e somar, apenas é enviado um comando para o Redis pedindo o total de vendas do dia anterior que o retorno já será o valor totalizado.</p>
+
+<p>Para entender, nada melhor que a prática e para acompanhar os exemplos pode ser tanto por uma instalação local do Redis, realizando o download através <a href="https://redis.io/download">da página oficial</a> ou caso não queira baixar ou instalar alguma coisa, o Redis disponibiliza um playground para brincar com ele e que pode ser acessado por <a href="https://try.redis.io">este link</a>. Como comentado anteriormente, a estrutura mais simples de chave e valor no Redis é a String, sendo da seguinte forma para inserir e recuperar um valor:</p>
+
+<p>Inserir um valor</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; SET chave valor
+OK
+</code></pre></div></div>
+
+<p>Inserir múltiplas chaves com valores</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; MSET chave1 valor1 chave2 valor2 chave3 valor3
+OK
+</code></pre></div></div>
+
+<p>Recuperar</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; GET chave
+"valor"
+</code></pre></div></div>
+
+<p>Recuperar múltiplas chaves</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; MGET chave1 chave2 chave3
+1) "valor1"
+2) "valor2"
+3) "valor3"
+</code></pre></div></div>
+
+<p>Se quisermos armazenar uma lista, existem duas formas:</p>
+
+<p>Inserir no lado esquerdo (no início)</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; LPUSH lista valor1
+(integer) 1
+</code></pre></div></div>
+
+<p>Inserir no lado direito (no fim)</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; RPUSH lista valor2
+(integer) 2
+</code></pre></div></div>
+
+<p>Mas e para recuperar as informações de uma lista? Deve utilizar o comando LRANGE e passar três parâmetros básicos para o mesmo, sendo a chave da lista, posição inicial e final.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; LRANGE lista 0 -1
+1) "valor1"
+2) "valor2"
+</code></pre></div></div>
+<p>Posição final -1? Sim, o Redis consegue contar de trás para frente, então qualquer um dos parâmetros de posições é possível passar um número negativo, sendo o -1 o último elemento, -2 o penúltimo e assim por diante.</p>
+
+<p>Inserimos uma lista, só que podemos ter registros repetidos, mas se precisar que não repita os valores, é possível utilizar um conjunto, o SET.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; SADD conjunto 1 2 3 2 1
+(integer) 3
+</code></pre></div></div>
+<p>Podemos ver que o retorno foi o número 3, pois como mencionamos anteriormente, só será adicionado no conjunto, caso o valor não exista. E para comprovar isso, podemos consultar.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; SMEMBERS conjunto
+1) "1"
+2) "2"
+3) "3"
+</code></pre></div></div>
+
+<p>No exemplo de uso do Redis como cache de sessão de um servidor web mencionada no post, podemos utilizar a estrutura de hashes, onde existe uma chave, vinculada a vários atributos e seus valores.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; HMSET sessao:usuario:1 usuario lucas nome "Lucas Furlaneto" perfil administrador
+OK
+</code></pre></div></div>
+<p>Para recuperar o valor de um dos atributos do hash, é só utilizar a palavra reservada HMGET e passar como parâmetro a chave e o atributo.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; HMGET sessao:usuario:1 perfil
+1) "administrador"
+</code></pre></div></div>
+
+<p>Como estamos falando de sessão de usuário, é comum que após um certo período de tempo, o sistema expire a sessão e realize o logout do usuário. Para isso, o Redis já fornece o recurso através do comando EXPIRE, informando os parâmetros da chave e o tempo em segundos que deseja que essa chave expire.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; EXPIRE sessao:usuario:1 60
+(integer) 1
+</code></pre></div></div>
+<p>Caso queira consultar o tempo ainda que resta para a chave expirar, basta utilizar a instrução TTL.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; TTL sessao:usuario:1
+(integer) 44
+</code></pre></div></div>
+<p>Após o período informado para expirar, no caso 60 segundos, ao tentar recuperar essa chave, já não será mais possível.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; HMGET sessao:usuario:1 perfil
+1) (nil)
+</code></pre></div></div>
+
+<p>Essa é uma pequena introdução ao mundo de Redis e algumas funcionalidades presentes em suas estruturas. Espero que com isso consigam ter entendido o conceito e um pouco mais sobre Redis. Caso queiram saber mais sobre Redis, vou deixar alguns links que podem consultar.</p>
+
+<p><strong>Links Úteis</strong></p>
+<ul>
+  <li><a href="https://redis.io/">Site oficial</a></li>
+  <li><a href="https://redis.io/documentation">Documentação</a></li>
+  <li><a href="https://try.redis.io/">Playground</a></li>
+</ul>
+
+  </div><a class="u-url" href="/introducao-ao-redis-o-nosql-mais-famoso/" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">techiohub</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">techiohub</li><li><a class="u-email" href="mailto:lucasfurlaneto.s@gmail.com">lucasfurlaneto.s@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Divulgação e troca de conhecimentos relacionados a desenvolvimento,  tecnologia, design, melhores práticas, mundo open source e muito mais.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
