@@ -11,8 +11,6 @@ tags:
 - container
 ---
 
-Facilitando os testes de integração em Java com Testcontainers
-
 Nos dias atuais, cada vez mais nós integramos com diversas ferramentas, podendo ser elas um banco de dados (Ex: MySQL, Redis, Mongo), um servidor web/proxy (Ex: nginx, Apache) ou até mesmo algum outro serviço que é desenvolvido pelo próprio time ou empresa. Muitas vezes apenas queremos subir alguma dessas dependências, executar os nossos testes e descer as mesmas para que não fique consumindo recursos sem necessidade.
 
 Com o surgimento do Docker conseguimos tornar mais fácil nossa vida, empacotando cada dependência em um container, iniciando ele e depois parando, mas ainda assim é necessário ter um gerenciamento manual do ciclo de vida desses containers. Para que seja possível realizar a comunicação com os containers, ainda é necessário recuperar o IP ou a porta aberta e passar para os nossos testes para que seja possível executar.
